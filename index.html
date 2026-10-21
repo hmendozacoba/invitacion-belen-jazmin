@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
+
+    <!--
 <audio id="musicaInvitacion" autoplay loop>
   <source src="cancion-belen.mp3" type="audio/mpeg">
   Tu navegador no puede reproducir este audio.
@@ -17,7 +19,7 @@
 <button type="button" onclick="document.getElementById('musicaInvitacion').play()">
   ♫ Escuchar nuestra canción
 </button>
-
+-->
   
   <!--
   <div class="music-card">
@@ -92,5 +94,34 @@
     <footer>Con cariño, <strong>Belén Jazmín</strong> <span>♡</span></footer>
   </div>
   <script src="script.js"></script>
+
+<audio id="musicaInvitacion" autoplay loop preload="auto">
+  <source src="cancion-belen.mp3" type="audio/mpeg">
+</audio>
+
+<button id="activarMusica" type="button"
+  style="display:none; background:#d98c9c; color:white;
+  border:1px solid #d5b15b; border-radius:25px;
+  padding:12px 22px; cursor:pointer;">
+  ♫ Escuchar canción para Belén Jazmín
+</button>
+
+<script>
+  const musica = document.getElementById("musicaInvitacion");
+  const botonMusica = document.getElementById("activarMusica");
+
+  function reproducirMusica() {
+    musica.play().then(() => {
+      botonMusica.style.display = "none";
+    }).catch(() => {
+      botonMusica.style.display = "inline-block";
+    });
+  }
+
+  window.addEventListener("load", reproducirMusica);
+
+  botonMusica.addEventListener("click", reproducirMusica);
+</script>
+  
 </body>
 </html>
