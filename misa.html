@@ -52,5 +52,24 @@
   <footer>Con cariño, <strong>Belén Jazmín</strong> <span>♡</span></footer>
 </div>
 <script src="script.js"></script>
+
+
+  <audio id="musicaInvitacion" loop preload="auto">
+  <source src="cancion-belen.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const musica = document.getElementById("musicaInvitacion");
+
+  if (sessionStorage.getItem("reproducirMusicaBelen") === "si") {
+    sessionStorage.removeItem("reproducirMusicaBelen");
+
+    musica.play().catch(() => {
+      console.log("El navegador no pudo iniciar la música.");
+    });
+  }
+</script>
+
+  
 </body>
 </html>
