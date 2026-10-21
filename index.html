@@ -95,6 +95,7 @@
   </div>
   <script src="script.js"></script>
 
+  <!--
 <audio id="musicaInvitacion" autoplay loop preload="auto">
   <source src="cancion-belen.mp3" type="audio/mpeg">
 </audio>
@@ -122,6 +123,32 @@
 
   botonMusica.addEventListener("click", reproducirMusica);
 </script>
+-->
+
+<audio id="musicaInvitacion" loop preload="auto">
+  <source src="cancion-belen.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const musica = document.getElementById("musicaInvitacion");
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const botones = document.querySelectorAll("a, button");
+
+    botones.forEach(function (boton) {
+      if (boton.textContent.trim().toLowerCase()
+          .includes("conoce los detalles")) {
+        boton.addEventListener("click", function () {
+          musica.play().catch(function (error) {
+            console.log("No se pudo reproducir el audio:", error);
+          });
+        });
+      }
+    });
+  });
+</script>
+
+  
   
 </body>
 </html>
